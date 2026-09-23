@@ -1,4 +1,4 @@
-package org.umn.dheryl3470week05_b
+package org.umn.dheryl3470week05_c
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,19 +11,17 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import org.umn.dheryl3470week05_b.ui.theme.Dheryl3470Week05_bTheme
+import org.umn.dheryl3470week05_c.ui.theme.Dheryl3470Week05_cTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            Dheryl3470Week05_bTheme {
+            Dheryl3470Week05_cTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    NavigationExample(
+                    Greeting(
+                        name = "Android",
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -33,23 +31,17 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun NavigationExample( modifier: Modifier = Modifier) {
-    val navController = rememberNavController()
-
-    NavHost(navController = navController, startDestination = Routes.SCREEN1) {
-        composable(Routes.SCREEN1) {
-            Screen1(onNavigate = { navController.navigate(Routes.SCREEN2) })
-        }
-        composable(Routes.SCREEN2) {
-            Screen2(onNavigate = { navController.popBackStack() })
-        }
-    }
+fun Greeting(name: String, modifier: Modifier = Modifier) {
+    Text(
+        text = "Hello $name!",
+        modifier = modifier
+    )
 }
 
 @Preview(showBackground = true)
 @Composable
-fun NavigationExamplePreview() {
-    Dheryl3470Week05_bTheme {
-        NavigationExample()
+fun GreetingPreview() {
+    Dheryl3470Week05_cTheme {
+        Greeting("Android")
     }
 }
